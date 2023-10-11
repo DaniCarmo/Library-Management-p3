@@ -3,7 +3,6 @@ Import libraries/ packages.
 """
 import os
 import sys
-import random
 from termcolor import colored
 import gspread
 from google.oauth2.service_account import Credentials
