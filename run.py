@@ -18,8 +18,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('book_repository')
 
-booklist = SHEET.worksheet('books')
-
 
 def welcome_message():
     """
@@ -28,11 +26,12 @@ def welcome_message():
     # clear_tmnl()
     print("Welcome to Your Leaving Cert Library!\n")
     print("To find and check out a book, please select an option below.\n")
-    print(colored(("(1) Search by Subject"), "green"))
-    print(colored(("(2) Search by Publisher"), "green"))
+    # print(colored(("(1) Search by Subject"), "green"))
+    # print(colored(("(2) Search by Publisher"), "green"))
     print(colored(("(3) Search by Title"), "green"))
 
     while True:
+        welcome_answer = input("\n")
         if welcome_answer not in ("1", "2", "3"):
             print(colored(("Oops! Please choose option 1, 2 or 3"), "red"))
         else:
@@ -40,13 +39,59 @@ def welcome_message():
     return welcome_answer
 
 
+def load_book_repository():
+    """
+    List all books in the spreadsheet.
+    """
+    global all_titles, all_publishers, all_data
+    clear_tmnl()
+    print("Please wait while books are being loaded...")
+
+    booklist = SHEET.worksheet('books')
+    data = booklist.get_all_values()
+
+    # Extract the header and data rows
+    headerSpreadsheet = data[0]
+    all_data = data[1:]
+
+    numberOfBooks = len(all_data)
+    numberOfColumns = len(headerSpreadsheet)
+    print("number of books = ")
+    print(numberOfBooks)
+    print("number of cols = ")
+    print(numberOfColumns)
+
+    # Create lists to store titles and publishers
+    all_titles = [row[0] for row in all_data]
+    all_publishers = [row[1] for row in all_data]
+
+    # Print the titles and publishers
+    print("all_titles = ")
+    print(all_titles)
+    print("all_publishers = ")
+    print(all_publishers)
+
+    print("Done loading books.")
+
+
+def search_by_title(title_to_search):
+    """
+    This function looks for a specific word
+    or phrase in a list of data
+    and gives you a list of where it was found.
+    """
+    for i, title in enumerate(all_titles):
+        if title == title_to_search:
+            return all_data[i]
+    return None  # Return None if the title is not found
+
+
 def main():
     """
-    The `main()` function starts the program,
-    loads books, and runs other functions continuously until
-    the user exits using the `return_to_begin()` function.
+    Start the program and runs other functions continuously until
+    the user exits
     """
-    load_books()
+    load_book_repository()
     running = True
 
     """"
@@ -57,7 +102,7 @@ def main():
         if not running:
             break
         loop()
-        running = return_to_begin(running)
+        # running = return_to_begin(running)
 
 
 def loop():
@@ -65,7 +110,7 @@ def loop():
     welcome_answer = welcome_message()
 
     # Select the books you want to print
-    if welcome_answer == ("1"):  # Search by subject
+    """if welcome_answer == ("1"):  # Search by subject
         print("Please enter Subject below:")
         searchword = input("\n")  # Use input
         print("")
@@ -76,28 +121,14 @@ def loop():
         searchword = input("\n")  # Use input
         print("")
         print(f"Search term is '{searchword}'")
-        # search_publisher()
-    elif welcome_answer == ("3"):  # Search by title
+        # search_publisher()"""
+    if welcome_answer == ("3"):  # Search by title
         print("Please enter Title below:")
         searchword = input("\n")  # Use input
         print("")
         print(f"Search term is '{searchword}'")
-        # search_title()
-
-# Find the column index under the heading
-header_row = booklist.row_values(1)
-# Add 1 because gspread uses 1-based indexing
-column_index = header_row.index() + 1
-
-# Get all the values under the heading
-# Now, 'values' contains all the data under the specified heading
-values = booklist.col_values(column_index)
-
-# Heading variables to call
-
-# title = header_row.column_index(1)
-# subject = header_row.column_index(2)
-# publisher = header_row.column_index(3)
+        search_results = search_by_title(searchword)
+        print(search_results)
 
 
 def clear_tmnl():
