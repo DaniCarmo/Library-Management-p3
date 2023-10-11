@@ -22,60 +22,67 @@ SHEET = GSPREAD_CLIENT.open('book_repository')
 
 def welcome_message():
     """
-    Welcome message providing the main menu of the library.
+    Welcome message providing the main menu of the library
     """
     clear_tmnl()
     print("Welcome to Your Leaving Cert Library!\n")
     print("To find and check out a book, please select an option below.\n")
     print(colored(("(1) Search by Subject"), "green"))
     print(colored(("(2) Search by Publisher"), "green"))
-    print(colored(("(3) Search by Book Title"), "green"))
+    print(colored(("(3) Search by Title"), "green"))
 
     while True:
-        welcome_answer = input("\n")
         if welcome_answer not in ("1", "2", "3"):
             print(colored(("Oops! Please choose option 1, 2 or 3"), "red"))
         else:
             break
     return welcome_answer
 
+    if welcome_answer == ("1"):
+        search_subject()
+    elif welcome_answer == ("2"):
+        search_publisher()
+    elif welcome_answer == ("3"):
+        search_title()
 
-def search_subject(sheet_name, subject):
+
+# Find the column index under the heading
+header_row = SHEET.row_values(1)
+column_index = header_row.index() + 1  # Add 1 because gspread uses 1-based indexing
+
+# Get all the values under the heading
+# Now, 'values' contains all the data under the specified heading
+values = SHEET.col_values(column_index)
+
+# Heading variables to call
+title = header_row.column_index(1)
+subject = header_row.column_index(2)
+publisher = header_row.column_index(3)
+
+
+def search_subject(SHEET, subject):
     """
     when user searches for book by subject
     """
-    return search_google_sheet(sheet_name, 'Subject', subject)
+    return search_repository(SHEET, 'Subject', subject)
 
 
-def search_publisher(sheet_name, publisher):
+def search_publisher(SHEET, publisher):
     """
     when user searches for book by publisher
     """
-    return search_google_sheet(sheet_name, 'Publisher', publisher)
+    return search_repository(SHEET, 'Publisher', publisher)
 
 
-def search_title(sheet_name, title):
+def search_title(SHEET, title):
     """
     when user searches for book by keyword
     """
-    return search_google_sheet(sheet_name, 'Title', book_name)
+    return search_repository(SHEET, 'Title', title)
 
 
-def search_google_sheet(sheet_name, column_heading, search_value):
-    # Open the Google Sheet by name
-    try:
-        sheet = client.open(sheet_name).sheet1
-    except gspread.exceptions.SpreadsheetNotFound:
-        return "Spreadsheet not found"
+def search_repository():
     
-    # Get all values from the specified column
-    column_values = sheet.col_values(sheet.find(column_heading).col)
-    
-    # Search for the value in the column and return matching rows
-    matching_rows = [row for row in sheet.get_all_records() if row[column_heading] == search_value]
-    
-    return matching_rows
-
 
 def clear_tmnl():
     """
