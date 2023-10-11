@@ -18,12 +18,14 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('book_repository')
 
+booklist = SHEET.worksheet('books')
+
 
 def welcome_message():
     """
     Welcome message providing the main menu of the library
     """
-    clear_tmnl()
+    # clear_tmnl()
     print("Welcome to Your Leaving Cert Library!\n")
     print("To find and check out a book, please select an option below.\n")
     print(colored(("(1) Search by Subject"), "green"))
@@ -38,42 +40,64 @@ def welcome_message():
     return welcome_answer
 
 
-# Welcome the user to the program
-welcome_answer = welcome_message()
+def main():
+    """
+    The `main()` function starts the program,
+    loads books, and runs other functions continuously until
+    the user exits using the `return_to_begin()` function.
+    """
+    load_books()
+    running = True
 
-# Select the books you want to print
-if welcome_answer == ("1"):  # Search by subject
-    print("Please enter Subject below:")
-    searchword = input("\n")  # Use input
-    print("")
-    print(f"Search term is '{searchword}'")
-    
-elif welcome_answer == ("2"):  # Search by publisher
-    print("Please enter Publisher below:")
-    searchword = input("\n")  # Use input
-    print("")
-    print(f"Search term is '{searchword}'")
-    
-elif welcome_answer == ("3"):  # Search by title
-    print("Please enter Title below:")
-    searchword = input("\n")  # Use input
-    print("")
-    print(f"Search term is '{searchword}'")
+    """"
+    Runs the following functions continuously unless you quit it.
+    """
 
+    while True:
+        if not running:
+            break
+        loop()
+        running = return_to_begin(running)
+
+
+def loop():
+    # Welcome the user to the program
+    welcome_answer = welcome_message()
+
+    # Select the books you want to print
+    if welcome_answer == ("1"):  # Search by subject
+        print("Please enter Subject below:")
+        searchword = input("\n")  # Use input
+        print("")
+        print(f"Search term is '{searchword}'")
+        # search_subject()
+    elif welcome_answer == ("2"):  # Search by publisher
+        print("Please enter Publisher below:")
+        searchword = input("\n")  # Use input
+        print("")
+        print(f"Search term is '{searchword}'")
+        # search_publisher()
+    elif welcome_answer == ("3"):  # Search by title
+        print("Please enter Title below:")
+        searchword = input("\n")  # Use input
+        print("")
+        print(f"Search term is '{searchword}'")
+        # search_title()
 
 # Find the column index under the heading
-header_row = SHEET.row_values(1)
+header_row = booklist.row_values(1)
 # Add 1 because gspread uses 1-based indexing
 column_index = header_row.index() + 1
 
 # Get all the values under the heading
 # Now, 'values' contains all the data under the specified heading
-values = SHEET.col_values(column_index)
+values = booklist.col_values(column_index)
 
 # Heading variables to call
-title = header_row.column_index(1)
-subject = header_row.column_index(2)
-publisher = header_row.column_index(3)
+
+# title = header_row.column_index(1)
+# subject = header_row.column_index(2)
+# publisher = header_row.column_index(3)
 
 
 def clear_tmnl():
@@ -81,3 +105,6 @@ def clear_tmnl():
     clears terminal
     """
     os.system("clear")
+
+
+main()
