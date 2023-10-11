@@ -1,3 +1,10 @@
+"""
+Import libraries/ packages.
+"""
+import os
+import sys
+import random
+from termcolor import colored
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -12,6 +19,3 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('book_repository')
 
-book = SHEET.worksheet('Book')
-data = book.get_all_values()
-print(data)
