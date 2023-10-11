@@ -38,10 +38,13 @@ def welcome_message():
     return welcome_answer
 
     if welcome_answer == ("1"):
+        print("Please enter Subject:")
         search_subject()
     elif welcome_answer == ("2"):
+        print("Please enter Publisher:")
         search_publisher()
     elif welcome_answer == ("3"):
+        print("Please enter Title:")
         search_title()
 
 
@@ -63,21 +66,30 @@ def search_subject(SHEET, subject):
     """
     when user searches for book by subject
     """
-    return search_repository(SHEET, 'Subject', subject)
+    if input == "":
+        return search_repository(SHEET, 'Subject', subject)
+    else exception gspread.exceptions.CellNotFound
+    print("Sorry could not find that in the library!")
 
 
 def search_publisher(SHEET, publisher):
     """
     when user searches for book by publisher
     """
-    return search_repository(SHEET, 'Publisher', publisher)
+    if input == "":
+        return search_repository(SHEET, 'Publisher', publisher)
+    else exception gspread.exceptions.CellNotFound
+    print("Sorry could not find that in the library!")
 
 
 def search_title(SHEET, title):
     """
     when user searches for book by keyword
     """
-    return search_repository(SHEET, 'Title', title)
+    if input == "":
+        return search_repository(SHEET, 'Title', title)
+    else exception gspread.exceptions.CellNotFound
+    print("Sorry could not find that in the library!")
 
 
 def search_repository():
