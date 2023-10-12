@@ -19,7 +19,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('book_repository')
 
 
-def load_book_repository():
+def load_books():
     """
     Load all books in the spreadsheet.
     """
@@ -31,8 +31,7 @@ def load_book_repository():
     booklist = SHEET.worksheet('books')
     data = booklist.get_all_values()
 
-    # Extract the header and data rows
-    headerSpreadsheet = data[0]
+    # Extract the data rows
     all_data = data[1:]
     # total number of books
     numberOfBooks = len(all_data)
@@ -67,19 +66,11 @@ def checkout_message(book_title):
 
 def main():
     """
-    Start the program and runs other functions continuously until
-    the user exits
+    Start the program and runs until user exits
     """
-    books = load_book_repository()
+    books = load_books()
     running = True
-
-    """"
-    Runs the following functions continuously unless you quit it.
-    """
-    while True:
-        if not running:
-            break
-        loop()
+    
     
     while True:
         clear_screen()
