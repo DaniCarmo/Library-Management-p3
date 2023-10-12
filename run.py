@@ -55,11 +55,11 @@ def load_book_repository():
     all_data = data[1:]
 
     numberOfBooks = len(all_data)
-    numberOfColumns = len(headerSpreadsheet)
+    # numberOfColumns = len(headerSpreadsheet)
     print("number of books = ")
     print(numberOfBooks)
-    print("number of cols = ")
-    print(numberOfColumns)
+    # print("number of cols = ")
+    # print(numberOfColumns)
 
     # Create lists to store titles, publishers and subjects
     all_titles = [row[0] for row in all_data]
@@ -90,6 +90,38 @@ def search_by_title(title_to_search):
             return all_data[i]
     # If no match is found, print a message and return None
     print(f"Sorry! No matching books found under: {title_to_search}")
+    return None
+
+
+def search_by_publisher(publisher_to_search):
+    """
+    This function looks for a specific wo
+    rd
+    or phrase in a list of data
+    and gives you a list of where it was found.
+    """
+    for i, publisher in enumerate(all_publishers):
+        if publisher == publisher_to_search:
+            print("Thank you! Here's the book(s) that match your search:")
+            return all_data[i]
+    # If no match is found, print a message and return None
+    print(f"Sorry! No matching books found under: {publisher_to_search}")
+    return None
+
+
+def search_by_subject(subject_to_search):
+    """
+    This function looks for a specific wo
+    rd
+    or phrase in a list of data
+    and gives you a list of where it was found.
+    """
+    for i, subject in enumerate(all_subjects):
+        if subject == subject_to_search:
+            print("Thank you! Here's the book(s) that match your search:")
+            return all_data[i]
+    # If no match is found, print a message and return None
+    print(f"Sorry! No matching books found under: {subject_to_search}")
     return None
 
 
