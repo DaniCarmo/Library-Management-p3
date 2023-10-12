@@ -28,12 +28,15 @@ def load_books():
     print("Please wait while books are being loaded...")
     print("Done loading books.\n")
 
-    booklist = SHEET.worksheet('books')
-    data = booklist.get_all_values()
+    # Handle error if spreadsheet cannot load
+    try:
+        booklist = SHEET.worksheet('books')
+        data = booklist.get_all_values()
+    except gspread.exceptions.APIError as e:
+        print(f"An error occurred while accessing Google Sheets: {e}")
 
-    # Extract the data rows
+    # Extract the data rows and get total no of books
     all_data = data[1:]
-    # total number of books
     numberOfBooks = len(all_data)
 
     # Create dictionaries of results
@@ -106,7 +109,7 @@ def main():
             print(f'Subject: {matching_books[title]["subject"]}')
 
         checkout_book = input("Enter book title to check out or 'q' to quit:")
-        
+           
         if checkout_book.lower() == 'q':
             break
 
@@ -117,6 +120,7 @@ def main():
             print("Looks like our library does not have that book.\n")
             print("Let's see if we can help find what you're looking for!\n")
             print("Returning to search menu....")
+
 
 def clear_screen():
     """
