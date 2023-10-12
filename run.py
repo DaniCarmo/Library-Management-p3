@@ -36,7 +36,7 @@ def load_books():
     # total number of books
     numberOfBooks = len(all_data)
 
-    # Create dictionaries for easy access
+    # Create dictionaries of results
     book_info = {}
     for row in all_data:
         title, publisher, subject = row
@@ -45,9 +45,9 @@ def load_books():
     return book_info
 
 
-def search_books_by_field(books, search_field, search_term):
+def search_by_field(books, search_field, search_term):
     """
-    Search for books by a specific field (title, publisher, subject).
+    Search for books by specific field (title, publisher, subject).
     """
     matching_books = {}
     for title, info in books.items():
@@ -58,6 +58,9 @@ def search_books_by_field(books, search_field, search_term):
 
 
 def checkout_message(book_title):
+    """
+    Message to appear to user upon checking out
+    """
     clear_screen()
     print(f"Great! You have successfully checked out '{book_title}'.")
     print("Please collect it from the library reception by 3pm today.")
@@ -69,9 +72,7 @@ def main():
     Start the program and runs until user exits
     """
     books = load_books()
-    running = True
-    
-    
+
     while True:
         clear_screen()
         print("Welcome to Your Leaving Cert Library!")
@@ -85,59 +86,37 @@ def main():
 
         if user_choice == "1":
             search_term = input("Please enter the subject: ")
-            matching_books = search_books_by_field(books, 'subject', search_term)
+            matching_books = search_by_field(books, 'subject', search_term)
         elif user_choice == "2":
             search_term = input("Please enter the publisher: ")
-            matching_books = search_books_by_field(books, 'publisher', search_term)
+            matching_books = search_by_field(books, 'publisher', search_term)
         elif user_choice == "3":
             search_term = input("Please enter the title: ")
-            matching_books = search_books_by_field(books, 'title', search_term)
+            matching_books = search_by_field(books, 'title', search_term)
         else:
             print("Oops! Please choose option 1, 2, or 3.")
             continue
 
         if not matching_books:
-            print(f'Sorry, no matching books found for "{search_term}".')
+            print(f'Uh oh! No matching books found for "{search_term}".')
 
         for title in matching_books:
-            print(f'Title: {title}, Publisher: {matching_books[title]["publisher"]}, Subject: {matching_books[title]["subject"]}')
+            print(f'Title: {title}')
+            print(f'Publisher: {matching_books[title]["publisher"]}')
+            print(f'Subject: {matching_books[title]["subject"]}')
 
-        book_to_checkout = input("Enter the title of the book you want to check out (or 'q' to quit): ")
+        checkout_book = input("Enter book title to check out or 'q' to quit:")
         
-        if book_to_checkout.lower() == 'q':
+        if checkout_book.lower() == 'q':
             break
 
-        if book_to_checkout in matching_books:
-            checkout_book(book_to_checkout)
+        if checkout_book in matching_books:
+            clear_screen()
+            checkout_message(checkout_book)
         else:
-            print("Book not found in the search results. Please try again.")
-
-
-def loop():
-    # Welcome the user to the program
-    welcome_answer = welcome_message()
-
-    # Select the books you want to print
-    if welcome_answer == ("1"):  # Search by subject
-        print("Please enter Subject below:")
-        searchword = input("\n")  # Use input
-        print("")
-        print(f"Search term is '{searchword}'")
-        # search_subject()
-    elif welcome_answer == ("2"):  # Search by publisher
-        print("Please enter Publisher below:")
-        searchword = input("\n")  # Use input
-        print("")
-        print(f"Search term is '{searchword}'")
-        # search_publisher()"""
-    elif welcome_answer == ("3"):  # Search by title
-        print("Please enter Title below:")
-        searchword = input("\n")  # Use input
-        print("")
-        print(f"Search term is '{searchword}'")
-        search_results = search_by_title(searchword)
-        print(search_results)
-
+            print("Looks like our library does not have that book.\n")
+            print("Let's see if we can help find what you're looking for!\n")
+            print("Returning to search menu....")
 
 def clear_screen():
     """
