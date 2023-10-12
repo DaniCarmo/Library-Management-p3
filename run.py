@@ -26,8 +26,8 @@ def welcome_message():
     # clear_tmnl()
     print("Welcome to Your Leaving Cert Library!\n")
     print("To find and check out a book, please select an option below.\n")
-    # print(colored(("(1) Search by Subject"), "green"))
-    # print(colored(("(2) Search by Publisher"), "green"))
+    print(colored(("(1) Search by Subject"), "green"))
+    print(colored(("(2) Search by Publisher"), "green"))
     print(colored(("(3) Search by Title"), "green"))
 
     while True:
@@ -61,22 +61,26 @@ def load_book_repository():
     print("number of cols = ")
     print(numberOfColumns)
 
-    # Create lists to store titles and publishers
+    # Create lists to store titles, publishers and subjects
     all_titles = [row[0] for row in all_data]
     all_publishers = [row[1] for row in all_data]
+    all_subjects = [row[2] for row in all_data]
 
     # Print the titles and publishers
     print("all_titles = ")
     print(all_titles)
     print("all_publishers = ")
     print(all_publishers)
+    print("all_subjects = ")
+    print(all_subjects)
 
     print("Done loading books.")
 
 
 def search_by_title(title_to_search):
     """
-    This function looks for a specific word
+    This function looks for a specific wo
+    rd
     or phrase in a list of data
     and gives you a list of where it was found.
     """
