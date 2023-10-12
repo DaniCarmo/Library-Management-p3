@@ -28,7 +28,6 @@ def load_books():
     """
     Load all books in the spreadsheet.
     """
-    clear_screen()
     print("Please wait while books are being loaded...")
     print("Done loading books.\n")
 
@@ -38,10 +37,11 @@ def load_books():
         data = booklist.get_all_values()
     except gspread.exceptions.APIError as e:
         print(f"An error occurred while accessing Google Sheets: {e}")
+        print("Please come back later and try again!")
 
     # Extract data rows
     all_data = data[1:]
-    
+
     # Create dictionaries of results
     book_info = {}
     for row in all_data:
@@ -67,7 +67,6 @@ def checkout_message(book_title):
     """
     Message to appear to user upon checking out
     """
-    clear_screen()
     print(f"Great! You have successfully checked out '{book_title}'.")
     print("Please collect it from the library reception by 3pm today.")
     print("Enjoy your reading!")
@@ -80,7 +79,6 @@ def main():
     books = load_books()
 
     while True:
-        clear_screen()
         print("Welcome to Your Leaving Cert Library!\n")
         print("To find and check out a book, please select an option below:\n")
         print(colored(("(1) Search by Subject"), "green"))
@@ -120,7 +118,6 @@ def main():
             break
 
         if checkout_book in matching_books:
-            clear_screen()
             checkout_message(checkout_book)
         else:
             print("Looks like our library does not have that book.\n")
