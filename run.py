@@ -19,27 +19,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('book_repository')
 
 
-def welcome_message():
-    """
-    Welcome message providing the main menu of the library
-    """
-    clear_screen()
-    print("Welcome to Your Leaving Cert Library!\n")
-    print(f"There are currently {numberOfBooks} books in the library.\n")
-    print("To find and check out a book, please select an option below:\n")
-    print(colored(("(1) Search by Subject"), "green"))
-    print(colored(("(2) Search by Publisher"), "green"))
-    print(colored(("(3) Search by Title"), "green"))
-
-    while True:
-        welcome_answer = input("\n")
-        if welcome_answer not in ("1", "2", "3"):
-            print(colored(("Oops! Please choose option 1, 2 or 3"), "red"))
-        else:
-            break
-    return welcome_answer
-
-
 def load_book_repository():
     """
     Load all books in the spreadsheet.
@@ -79,23 +58,11 @@ def search_books_by_field(books, search_field, search_term):
     return matching_books
 
 
-def check_out(book_title):
+def checkout_message(book_title):
     clear_screen()
-    while True:
-        user_choice = input(f"Would you like to check out '{book_title}'?")
-        print("Type 'yes' or 'no'): ")
-        if user_choice.lower() == 'yes':
-            print(f"Great you have successfully checked out '{book_title}'.\n")
-            print("Please collect from the library reception by 3pm today.\n")
-            print("Enjoy your reading!")
-            break
-        elif user_choice.lower() == 'no':
-            print("Ok then let's help you find what you're looking for.\n")
-            print("Returning to search menu...")
-            break
-        else:
-            print("Oops! Invalid input.\n")
-            print("Type 'yes' to check out book or 'no' to search again.")
+    print(f"Great! You have successfully checked out '{book_title}'.")
+    print("Please collect it from the library reception by 3pm today.")
+    print("Enjoy your reading!")
 
 
 def main():
@@ -103,18 +70,56 @@ def main():
     Start the program and runs other functions continuously until
     the user exits
     """
-    load_book_repository()
+    books = load_book_repository()
     running = True
 
     """"
     Runs the following functions continuously unless you quit it.
     """
-
     while True:
         if not running:
             break
         loop()
-        # running = return_to_begin(running)
+    
+    while True:
+        clear_screen()
+        print("Welcome to Your Leaving Cert Library!")
+        print(f"There are currently {len(books)} books in the library.")
+        print("To find and check out a book, please select an option below:")
+        print("(1) Search by Subject")
+        print("(2) Search by Publisher")
+        print("(3) Search by Title")
+
+        user_choice = input("Enter your choice (1/2/3): ")
+
+        if user_choice == "1":
+            search_term = input("Please enter the subject: ")
+            matching_books = search_books_by_field(books, 'subject', search_term)
+        elif user_choice == "2":
+            search_term = input("Please enter the publisher: ")
+            matching_books = search_books_by_field(books, 'publisher', search_term)
+        elif user_choice == "3":
+            search_term = input("Please enter the title: ")
+            matching_books = search_books_by_field(books, 'title', search_term)
+        else:
+            print("Oops! Please choose option 1, 2, or 3.")
+            continue
+
+        if not matching_books:
+            print(f'Sorry, no matching books found for "{search_term}".')
+
+        for title in matching_books:
+            print(f'Title: {title}, Publisher: {matching_books[title]["publisher"]}, Subject: {matching_books[title]["subject"]}')
+
+        book_to_checkout = input("Enter the title of the book you want to check out (or 'q' to quit): ")
+        
+        if book_to_checkout.lower() == 'q':
+            break
+
+        if book_to_checkout in matching_books:
+            checkout_book(book_to_checkout)
+        else:
+            print("Book not found in the search results. Please try again.")
 
 
 def loop():
