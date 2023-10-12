@@ -84,8 +84,10 @@ def search_by_title(title_to_search):
     """
     for i, title in enumerate(all_titles):
         if title == title_to_search:
-            print("Thank you! Here's the book(s) that match your search:")
+            print("Thank you! Here's the book(s) that match your search:\n")
             return all_data[i]
+            # function to check out book or search again
+            check_out()
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{title_to_search}"')
     return None
@@ -98,8 +100,10 @@ def search_by_publisher(publisher_to_search):
     """
     for i, publisher in enumerate(all_publishers):
         if publisher == publisher_to_search:
-            print("Thank you! Here's the book(s) that match your search:")
+            print("Thank you! Here's the book(s) that match your search:\n")
             return all_data[i]
+            # function to check out book or search again
+            check_out()
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{publisher_to_search}"')
     return None
@@ -112,11 +116,31 @@ def search_by_subject(subject_to_search):
     """
     for i, subject in enumerate(all_subjects):
         if subject == subject_to_search:
-            print("Thank you! Here's the book(s) that match your search:")
+            print("Thank you! Here's the book(s) that match your search:\n")
             return all_data[i]
+            # function to check out book or search again
+            check_out()
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{subject_to_search}"')
     return None
+
+
+def check_out(book_title):
+    while True:
+        user_choice = input(f"Would you like to check out '{book_title}'?")
+        print("Type 'yes' or 'no'): ")
+        if user_choice.lower() == 'yes':
+            print(f"Great you have successfully checked out '{book_title}'.\n")
+            print("Please collect from the library reception by 3pm today.\n")
+            print("Enjoy your reading!")
+            break
+        elif user_choice.lower() == 'no':
+            print("Ok then let's help you find what you're looking for.\n")
+            print("Returning to search menu...")
+            break
+        else:
+            print("Oops! Invalid input.\n")
+            print("Type 'yes' to check out book or 'no' to search again.")
 
 
 def main():
