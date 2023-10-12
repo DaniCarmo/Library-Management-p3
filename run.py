@@ -87,6 +87,10 @@ def main():
 
         user_choice = input("Enter your choice (1/2/3): ")
 
+        if not user_choice:
+            print("Sorry you must enter an option above to continue!")
+            continue
+
         if user_choice == "1":
             search_term = input("Please enter the subject: ")
             matching_books = search_by_field(books, 'subject', search_term)
