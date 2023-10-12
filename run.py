@@ -23,7 +23,7 @@ def load_book_repository():
     """
     Load all books in the spreadsheet.
     """
-    global all_titles, all_publishers, all_data, all_subjects, numberOfBooks
+    global numberOfBooks
     clear_screen()
     print("Please wait while books are being loaded...")
     print("Done loading books.\n")
