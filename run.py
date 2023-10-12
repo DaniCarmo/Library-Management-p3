@@ -86,8 +86,11 @@ def search_by_title(title_to_search):
     """
     for i, title in enumerate(all_titles):
         if title == title_to_search:
+            print("Thank you! Here's the book(s) that match your search:")
             return all_data[i]
-    return None  # Return None if the title is not found
+    # If no match is found, print a message and return None
+    print(f"Sorry! No matching books found under: {title_to_search}")
+    return None
 
 
 def main():
