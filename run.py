@@ -42,10 +42,10 @@ def welcome_message():
 
 def load_book_repository():
     """
-    List all books in the spreadsheet.
+    Load all books in the spreadsheet.
     """
     global all_titles, all_publishers, all_data, all_subjects, numberOfBooks
-    clear_tmnl()
+    clear_screen()
     print("Please wait while books are being loaded...")
     print("Done loading books.\n")
 
@@ -57,12 +57,14 @@ def load_book_repository():
     all_data = data[1:]
     # total number of books
     numberOfBooks = len(all_data)
-    # numberOfColumns = len(headerSpreadsheet)
 
-    # Create lists to store titles, publishers and subjects
-    all_titles = [row[0] for row in all_data]
-    all_publishers = [row[1] for row in all_data]
-    all_subjects = [row[2] for row in all_data]
+    # Create dictionaries for easy access
+    book_info = {}
+    for row in all_data:
+        title, publisher, subject = row
+        book_info[title] = {'publisher': publisher, 'subject': subject}
+
+    return book_info
 
 
 def search_by_title(title_to_search):
