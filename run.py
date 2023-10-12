@@ -118,7 +118,7 @@ def main():
             print(f'Subject: {matching_books[title]["subject"]}')
 
         checkout_book = input("Enter book title to check out or 'q' to quit:")
-           
+      
         if checkout_book.lower() == 'q':
             break
 
@@ -141,4 +141,5 @@ def clear_screen():
         os.system('cls')
 
 
-main()
+if __name__ == "__main__":
+    main()
