@@ -93,7 +93,7 @@ def main():
         user_choice = input("Enter your choice (1/2/3): ")
 
         if not user_choice:
-            print(colored(("Sorry you must enter an option above to continue!"), "red"))
+            print(colored(("Please enter an option above to continue"), "red"))
             continue
 
         if user_choice == "1":
