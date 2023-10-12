@@ -67,55 +67,16 @@ def load_book_repository():
     return book_info
 
 
-def search_by_title(title_to_search):
+def search_books_by_field(books, search_field, search_term):
     """
-    Look for word or phrase in a list
-    of data and return matches
+    Search for books by a specific field (title, publisher, subject).
     """
-    for i, title in enumerate(all_titles):
-        if title == title_to_search:
-            print("Thank you! Here's the book(s) that match your search:\n")
-            return all_data[i]
-            # function to check out book or search again
-            check_out()
-    # If no match is found, print a message and return None
-    print(f'Sorry! No matching books found under: "{title_to_search}"')
-    print("Returning to search menu...")
-    clear_screen()
+    matching_books = {}
+    for title, info in books.items():
+        if search_term.lower() in info[search_field].lower():
+            matching_books[title] = info
 
-
-def search_by_publisher(publisher_to_search):
-    """
-    Look for word or phrase in a list
-    of data and return matches
-    """
-    for i, publisher in enumerate(all_publishers):
-        if publisher == publisher_to_search:
-            print("Thank you! Here's the book(s) that match your search:\n")
-            return all_data[i]
-            # function to check out book or search again
-            check_out()
-    # If no match is found, print a message and return None
-    print(f'Sorry! No matching books found under: "{publisher_to_search}"')
-    print("Returning to search menu...")
-    clear_screen()
-
-
-def search_by_subject(subject_to_search):
-    """
-    Look for word or phrase in a list
-    of data and return matches
-    """
-    for i, subject in enumerate(all_subjects):
-        if subject == subject_to_search:
-            print("Thank you! Here's the book(s) that match your search:\n")
-            return all_data[i]
-            # function to check out book or search again
-            check_out()
-    # If no match is found, print a message and return None
-    print(f'Sorry! No matching books found under: "{subject_to_search}"')
-    print("Returning to search menu...")
-    clear_screen()
+    return matching_books
 
 
 def check_out(book_title):
