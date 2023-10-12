@@ -23,7 +23,7 @@ def welcome_message():
     """
     Welcome message providing the main menu of the library
     """
-    # clear_tmnl()
+    clear_tmnl()
     print("Welcome to Your Leaving Cert Library!\n")
     print(f"There are currently {numberOfBooks} books in the library.\n")
     print("To find and check out a book, please select an option below:\n")
@@ -58,7 +58,6 @@ def load_book_repository():
     # total number of books
     numberOfBooks = len(all_data)
     # numberOfColumns = len(headerSpreadsheet)
-    
     # print(numberOfBooks)
     # print("number of cols = ")
     # print(numberOfColumns)
@@ -91,7 +90,7 @@ def search_by_title(title_to_search):
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{title_to_search}"')
     print("Returning to search menu...")
-    return None
+    clear_tmnl()
 
 
 def search_by_publisher(publisher_to_search):
@@ -108,7 +107,7 @@ def search_by_publisher(publisher_to_search):
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{publisher_to_search}"')
     print("Returning to search menu...")
-    return None
+    clear_tmnl()
 
 
 def search_by_subject(subject_to_search):
@@ -125,10 +124,11 @@ def search_by_subject(subject_to_search):
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{subject_to_search}"')
     print("Returning to search menu...")
-    return None
+    clear_tmnl()
 
 
 def check_out(book_title):
+    clear_tmnl()
     while True:
         user_choice = input(f"Would you like to check out '{book_title}'?")
         print("Type 'yes' or 'no'): ")
