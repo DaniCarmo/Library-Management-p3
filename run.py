@@ -90,6 +90,7 @@ def search_by_title(title_to_search):
             check_out()
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{title_to_search}"')
+    print("Returning to search menu...")
     return None
 
 
@@ -106,6 +107,7 @@ def search_by_publisher(publisher_to_search):
             check_out()
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{publisher_to_search}"')
+    print("Returning to search menu...")
     return None
 
 
@@ -122,6 +124,7 @@ def search_by_subject(subject_to_search):
             check_out()
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{subject_to_search}"')
+    print("Returning to search menu...")
     return None
 
 
