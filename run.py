@@ -43,7 +43,7 @@ def load_book_repository():
     """
     List all books in the spreadsheet.
     """
-    global all_titles, all_publishers, all_data
+    global all_titles, all_publishers, all_data, all_subjects
     clear_tmnl()
     print("Please wait while books are being loaded...")
 
@@ -66,21 +66,20 @@ def load_book_repository():
     all_publishers = [row[1] for row in all_data]
     all_subjects = [row[2] for row in all_data]
 
-    # Print the titles and publishers
+    """# Print the titles and publishers
     print("all_titles = ")
     print(all_titles)
     print("all_publishers = ")
     print(all_publishers)
     print("all_subjects = ")
-    print(all_subjects)
+    print(all_subjects)"""
 
     print("Done loading books.")
 
 
 def search_by_title(title_to_search):
     """
-    This function looks for a specific wo
-    rd
+    Look for word
     or phrase in a list of data
     and gives you a list of where it was found.
     """
@@ -95,8 +94,7 @@ def search_by_title(title_to_search):
 
 def search_by_publisher(publisher_to_search):
     """
-    This function looks for a specific wo
-    rd
+    Look for word
     or phrase in a list of data
     and gives you a list of where it was found.
     """
@@ -111,8 +109,7 @@ def search_by_publisher(publisher_to_search):
 
 def search_by_subject(subject_to_search):
     """
-    This function looks for a specific wo
-    rd
+    Look for word
     or phrase in a list of data
     and gives you a list of where it was found.
     """
