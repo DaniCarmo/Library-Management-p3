@@ -46,6 +46,7 @@ def load_book_repository():
     global all_titles, all_publishers, all_data, all_subjects
     clear_tmnl()
     print("Please wait while books are being loaded...")
+    print("Done loading books.")
 
     booklist = SHEET.worksheet('books')
     data = booklist.get_all_values()
@@ -56,7 +57,7 @@ def load_book_repository():
 
     numberOfBooks = len(all_data)
     # numberOfColumns = len(headerSpreadsheet)
-    print("number of books = ")
+    print(f"There are currently {number of books} books in the library to chose from!")
     print(numberOfBooks)
     # print("number of cols = ")
     # print(numberOfColumns)
@@ -73,8 +74,6 @@ def load_book_repository():
     print(all_publishers)
     print("all_subjects = ")
     print(all_subjects)"""
-
-    print("Done loading books.")
 
 
 def search_by_title(title_to_search):
