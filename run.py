@@ -86,14 +86,14 @@ def main():
         print("Welcome to Your Leaving Cert Library!")
         print(f"There are currently {len(books)} books in the library.")
         print("To find and check out a book, please select an option below:")
-        print("(1) Search by Subject")
-        print("(2) Search by Publisher")
-        print("(3) Search by Title")
+        print(colored(("(1) Search by Subject"), "green"))
+        print(colored(("(2) Search by Publisher"), "green"))
+        print(colored(("(3) Search by Title"), "green"))
 
         user_choice = input("Enter your choice (1/2/3): ")
 
         if not user_choice:
-            print("Sorry you must enter an option above to continue!")
+            print(colored(("Sorry you must enter an option above to continue!"), "red"))
             continue
 
         if user_choice == "1":
@@ -106,7 +106,7 @@ def main():
             search_term = input("Please enter the title: ")
             matching_books = search_by_field(books, 'title', search_term)
         else:
-            print("Oops! Please choose option 1, 2, or 3.")
+            print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
             continue
 
         if not matching_books:
