@@ -13,7 +13,12 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-CREDS = Credentials.from_service_account_file('creds.json')
+# Error handling if json file not found
+try:
+    CREDS = Credentials.from_service_account_file('creds.json')
+except FileNotFoundError as e:
+    print(f"Error: 'creds.json' file not found. Make sure the file exists.")
+
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('book_repository')
