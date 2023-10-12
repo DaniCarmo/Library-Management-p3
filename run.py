@@ -23,7 +23,7 @@ def welcome_message():
     """
     Welcome message providing the main menu of the library
     """
-    clear_tmnl()
+    clear_screen()
     print("Welcome to Your Leaving Cert Library!\n")
     print(f"There are currently {numberOfBooks} books in the library.\n")
     print("To find and check out a book, please select an option below:\n")
@@ -58,22 +58,11 @@ def load_book_repository():
     # total number of books
     numberOfBooks = len(all_data)
     # numberOfColumns = len(headerSpreadsheet)
-    # print(numberOfBooks)
-    # print("number of cols = ")
-    # print(numberOfColumns)
 
     # Create lists to store titles, publishers and subjects
     all_titles = [row[0] for row in all_data]
     all_publishers = [row[1] for row in all_data]
     all_subjects = [row[2] for row in all_data]
-
-    """# Print the titles and publishers
-    print("all_titles = ")
-    print(all_titles)
-    print("all_publishers = ")
-    print(all_publishers)
-    print("all_subjects = ")
-    print(all_subjects)"""
 
 
 def search_by_title(title_to_search):
@@ -90,7 +79,7 @@ def search_by_title(title_to_search):
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{title_to_search}"')
     print("Returning to search menu...")
-    clear_tmnl()
+    clear_screen()
 
 
 def search_by_publisher(publisher_to_search):
@@ -107,7 +96,7 @@ def search_by_publisher(publisher_to_search):
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{publisher_to_search}"')
     print("Returning to search menu...")
-    clear_tmnl()
+    clear_screen()
 
 
 def search_by_subject(subject_to_search):
@@ -124,11 +113,11 @@ def search_by_subject(subject_to_search):
     # If no match is found, print a message and return None
     print(f'Sorry! No matching books found under: "{subject_to_search}"')
     print("Returning to search menu...")
-    clear_tmnl()
+    clear_screen()
 
 
 def check_out(book_title):
-    clear_tmnl()
+    clear_screen()
     while True:
         user_choice = input(f"Would you like to check out '{book_title}'?")
         print("Type 'yes' or 'no'): ")
@@ -191,11 +180,14 @@ def loop():
         print(search_results)
 
 
-def clear_tmnl():
+def clear_screen():
     """
-    clears terminal
+    Clear the terminal screen.
     """
-    os.system("clear")
+    if os.name == 'posix':
+        os.system('clear')
+    elif os.name == 'nt':
+        os.system('cls')
 
 
 main()
