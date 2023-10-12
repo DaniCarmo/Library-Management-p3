@@ -25,7 +25,8 @@ def welcome_message():
     """
     # clear_tmnl()
     print("Welcome to Your Leaving Cert Library!\n")
-    print("To find and check out a book, please select an option below.\n")
+    print(f"There are currently {numberOfBooks} books in the library.\n")
+    print("To find and check out a book, please select an option below:\n")
     print(colored(("(1) Search by Subject"), "green"))
     print(colored(("(2) Search by Publisher"), "green"))
     print(colored(("(3) Search by Title"), "green"))
@@ -43,10 +44,10 @@ def load_book_repository():
     """
     List all books in the spreadsheet.
     """
-    global all_titles, all_publishers, all_data, all_subjects
+    global all_titles, all_publishers, all_data, all_subjects, numberOfBooks
     clear_tmnl()
     print("Please wait while books are being loaded...")
-    print("Done loading books.")
+    print("Done loading books.\n")
 
     booklist = SHEET.worksheet('books')
     data = booklist.get_all_values()
@@ -54,11 +55,11 @@ def load_book_repository():
     # Extract the header and data rows
     headerSpreadsheet = data[0]
     all_data = data[1:]
-
+    # total number of books
     numberOfBooks = len(all_data)
     # numberOfColumns = len(headerSpreadsheet)
-    print(f"There are currently {number of books} books in the library to chose from!")
-    print(numberOfBooks)
+    
+    # print(numberOfBooks)
     # print("number of cols = ")
     # print(numberOfColumns)
 
@@ -78,46 +79,43 @@ def load_book_repository():
 
 def search_by_title(title_to_search):
     """
-    Look for word
-    or phrase in a list of data
-    and gives you a list of where it was found.
+    Look for word or phrase in a list
+    of data and return matches
     """
     for i, title in enumerate(all_titles):
         if title == title_to_search:
             print("Thank you! Here's the book(s) that match your search:")
             return all_data[i]
     # If no match is found, print a message and return None
-    print(f"Sorry! No matching books found under: {title_to_search}")
+    print(f'Sorry! No matching books found under: "{title_to_search}"')
     return None
 
 
 def search_by_publisher(publisher_to_search):
     """
-    Look for word
-    or phrase in a list of data
-    and gives you a list of where it was found.
+    Look for word or phrase in a list
+    of data and return matches
     """
     for i, publisher in enumerate(all_publishers):
         if publisher == publisher_to_search:
             print("Thank you! Here's the book(s) that match your search:")
             return all_data[i]
     # If no match is found, print a message and return None
-    print(f"Sorry! No matching books found under: {publisher_to_search}")
+    print(f'Sorry! No matching books found under: "{publisher_to_search}"')
     return None
 
 
 def search_by_subject(subject_to_search):
     """
-    Look for word
-    or phrase in a list of data
-    and gives you a list of where it was found.
+    Look for word or phrase in a list
+    of data and return matches
     """
     for i, subject in enumerate(all_subjects):
         if subject == subject_to_search:
             print("Thank you! Here's the book(s) that match your search:")
             return all_data[i]
     # If no match is found, print a message and return None
-    print(f"Sorry! No matching books found under: {subject_to_search}")
+    print(f'Sorry! No matching books found under: "{subject_to_search}"')
     return None
 
 
@@ -145,7 +143,7 @@ def loop():
     welcome_answer = welcome_message()
 
     # Select the books you want to print
-    """if welcome_answer == ("1"):  # Search by subject
+    if welcome_answer == ("1"):  # Search by subject
         print("Please enter Subject below:")
         searchword = input("\n")  # Use input
         print("")
@@ -157,7 +155,7 @@ def loop():
         print("")
         print(f"Search term is '{searchword}'")
         # search_publisher()"""
-    if welcome_answer == ("3"):  # Search by title
+    elif welcome_answer == ("3"):  # Search by title
         print("Please enter Title below:")
         searchword = input("\n")  # Use input
         print("")
