@@ -28,7 +28,6 @@ def load_books():
     """
     Load all books in the spreadsheet.
     """
-    global numberOfBooks
     clear_screen()
     print("Please wait while books are being loaded...")
     print("Done loading books.\n")
@@ -40,10 +39,9 @@ def load_books():
     except gspread.exceptions.APIError as e:
         print(f"An error occurred while accessing Google Sheets: {e}")
 
-    # Extract the data rows and get total no of books
+    # Extract data rows
     all_data = data[1:]
-    numberOfBooks = len(all_data)
-
+    
     # Create dictionaries of results
     book_info = {}
     for row in all_data:
@@ -83,9 +81,8 @@ def main():
 
     while True:
         clear_screen()
-        print("Welcome to Your Leaving Cert Library!")
-        print(f"There are currently {len(books)} books in the library.")
-        print("To find and check out a book, please select an option below:")
+        print("Welcome to Your Leaving Cert Library!\n")
+        print("To find and check out a book, please select an option below:\n")
         print(colored(("(1) Search by Subject"), "green"))
         print(colored(("(2) Search by Publisher"), "green"))
         print(colored(("(3) Search by Title"), "green"))
