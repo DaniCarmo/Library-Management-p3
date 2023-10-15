@@ -115,7 +115,7 @@ def main():
         checkout_book = input("Enter book title to check out or 'q' to quit:")
 
         if checkout_book.lower() == 'q':
-            break
+            main()
 
         if checkout_book in matching_books:
             checkout_message(checkout_book)
