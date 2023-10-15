@@ -74,7 +74,7 @@ def checkout_message(book_title):
 
 def main():
     """
-    Start the program and runs until user exits
+    Start the program
     """
     books = load_books()
 
@@ -114,10 +114,10 @@ def main():
 
         checkout_book = input("Enter book title to check out or 'q' to quit:")
 
-        if checkout_book.lower() == 'q':
+        if checkout_book.strip().lower() == 'q':
             main()
 
-        if checkout_book in matching_books:
+        if checkout_book.strip().lower() in matching_books:
             checkout_message(checkout_book)
         else:
             print("Looks like our library does not have that book.\n")
