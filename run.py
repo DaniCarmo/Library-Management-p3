@@ -67,9 +67,10 @@ def checkout_message(book_title):
     """
     Message to appear to user upon checking out
     """
-    print(f"Great! You have successfully checked out '{book_title}'.")
-    print("Please collect it from the library reception by 3pm today.")
-    print("Enjoy your reading!")
+    # clear_screen
+    print(f"Great! You have successfully checked out '{book_title}'\n")
+    print("Please collect it from the library reception by 3pm today.\n")
+    print("Enjoy your reading!\n")
 
 
 def main():
@@ -77,6 +78,7 @@ def main():
     Start the program
     """
     books = load_books()
+    clear_screen()
 
     while True:
         print("Welcome to Your Leaving Cert Library!\n")
@@ -93,12 +95,15 @@ def main():
 
         if user_choice == "1":
             search_term = input("Please enter the subject: ")
+            clear_screen()
             matching_books = search_by_field(books, 'subject', search_term)
         elif user_choice == "2":
             search_term = input("Please enter the publisher: ")
+            clear_screen()
             matching_books = search_by_field(books, 'publisher', search_term)
         elif user_choice == "3":
             search_term = input("Please enter the title: ")
+            clear_screen()
             matching_books = search_by_field(books, 'title', search_term)
         else:
             print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
@@ -110,14 +115,15 @@ def main():
         for title in matching_books:
             print(f'Title: {title}')
             print(f'Publisher: {matching_books[title]["publisher"]}')
-            print(f'Subject: {matching_books[title]["subject"]}')
+            print(f'Subject: {matching_books[title]["subject"]}\n')
 
-        checkout_book = input("Enter book title to check out or 'q' to quit:")
+        checkout_book = input("Enter book title to checkout or 'q' to quit:\n")
 
         if checkout_book.strip().lower() == 'q':
             main()
 
-        if checkout_book.strip().lower() in matching_books:
+        if checkout_book.strip() in matching_books:
+            # clear_screen()
             checkout_message(checkout_book)
         else:
             print("Looks like our library does not have that book.\n")
