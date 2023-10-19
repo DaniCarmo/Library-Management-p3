@@ -79,8 +79,8 @@ def checkout_message(book_title):
 
 def checkout_book(books, matching_books):
     while True:
-        checkout_choice = input("Enter book title to checkout \
-            or 'm' for main menu:\n")
+        checkout_choice = input("Enter book title to checkout or "
+                                "'m' for main menu:\n")
 
         if checkout_choice.strip().lower() == 'm':
             return  # Return to the main menu
@@ -96,7 +96,8 @@ def checkout_book(books, matching_books):
             else:
                 print("Ok let's try that again!\n")
         else:
-            print("Looks like our library does not have that book.\n")
+            print(colored(("Looks like our library does not "
+                           "have that book.\n"), "red"))
             print("Let's see if we can help find what you're looking for!\n")
 
 
