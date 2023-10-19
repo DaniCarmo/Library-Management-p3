@@ -45,8 +45,12 @@ def load_books():
     book_info = {}
     for row in all_data:
         title, publisher, subject = row
-        book_info[title] = {'title': title, 'publisher': publisher, 'subject': subject}
-    
+        book_info[title] = {
+            'title': title,
+            'publisher': publisher,
+            'subject': subject
+            }
+
     print("Done loading books.\n")
     return book_info
 
