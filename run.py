@@ -46,7 +46,7 @@ def load_books():
     book_info = {}
     for row in all_data:
         title, publisher, subject = row
-        book_info[title] = {'publisher': publisher, 'subject': subject}
+        book_info[title] = {'title': title,'publisher': publisher, 'subject': subject}
 
     return book_info
 
@@ -91,8 +91,9 @@ def main():
 
         if not user_choice:
             print(colored(("Please enter an option above to continue"), "red"))
-            continue
 
+            continue
+        
         if user_choice == "1":
             search_term = input("Please enter the subject: ")
             clear_screen()
@@ -114,6 +115,7 @@ def main():
 
         for title in matching_books:
             print(f'Title: {title}')
+            
             print(f'Publisher: {matching_books[title]["publisher"]}')
             print(f'Subject: {matching_books[title]["subject"]}\n')
 
