@@ -29,7 +29,6 @@ def load_books():
     Load all books in the spreadsheet.
     """
     print("Please wait while books are being loaded...")
-    print("Done loading books.\n")
 
     # Handle error if spreadsheet cannot load
     try:
@@ -47,7 +46,8 @@ def load_books():
     for row in all_data:
         title, publisher, subject = row
         book_info[title] = {'title': title, 'publisher': publisher, 'subject': subject}
-
+    
+    print("Done loading books.\n")
     return book_info
 
 
@@ -71,7 +71,6 @@ def checkout_message(book_title):
     print(f"Great! You have successfully checked out '{book_title}'\n")
     print("Please collect from the library reception by 3pm today.\n")
     print("Enjoy your reading!\n")
-    clear_screen()
 
 
 def checkout_book(books, matching_books):
@@ -119,7 +118,8 @@ def handle_user_choice():
         print(f'Subject: {matching_books[title]["subject"]}\n')
 
     if not matching_books:
-        print(f'Uh oh! No matching books found for "{search_term}".')
+        print(f'Uh oh! No matching books found for "{search_term}".\n')
+        print("Let's give it another shot.")
     else:
         checkout_book(books, matching_books)
 
@@ -128,10 +128,11 @@ def main():
     """
     Display the main menu and get user choice
     """
-    global books
-    books = load_books()
     clear_screen()
     print("Welcome to Your Leaving Cert Library!\n")
+
+    global books
+    books = load_books()
 
     while True:
         print("To find and check out a book, please select an option below:\n")
