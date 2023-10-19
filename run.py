@@ -139,15 +139,18 @@ def main():
         print(colored(("(1) Search by Subject"), "green"))
         print(colored(("(2) Search by Publisher"), "green"))
         print(colored(("(3) Search by Title"), "green"))
+        print(colored("(4) Quit", "red"))
 
         global user_choice
-        user_choice = input("Enter your choice (1/2/3): ")
+        user_choice = input("Enter your choice (1/2/3/4): ")
 
         if not user_choice:
-            print(colored(("Please enter an option above to continue"), "red"))
-
-            continue
-        handle_user_choice()
+            print(colored("Please enter an option above to continue", "red"))
+        elif user_choice == "4":
+            print("Goodbye! Thanks for using the library system.")
+            break
+        else:
+            handle_user_choice()
 
 
 def clear_screen():
