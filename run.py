@@ -46,7 +46,7 @@ def load_books():
     book_info = {}
     for row in all_data:
         title, publisher, subject = row
-        book_info[title] = {'title': title,'publisher': publisher, 'subject': subject}
+        book_info[title] = {'title': title, 'publisher': publisher, 'subject': subject}
 
     return book_info
 
@@ -73,15 +73,37 @@ def checkout_message(book_title):
     print("Enjoy your reading!\n")
 
 
+def checkout_book(books, matching_books):
+    while True:
+        checkout_choice = input("Enter book title to checkout or 'q' to quit:\n")
+
+        if checkout_choice.strip().lower() == 'q':
+            return  # Return to the main menu
+
+        if checkout_choice.strip() in matching_books:
+            book_title = checkout_choice.strip()
+            print(f'You selected: {book_title}')
+            confirm = input("Confirm checkout (y/n): ").strip().lower()
+            if confirm == 'y':
+                checkout_message(book_title)
+                break
+            else:
+                print("Checkout canceled. Let's see if we can help you find another book!\n")
+        else:
+            print("Looks like our library does not have that book.\n")
+            print("Let's see if we can help find what you're looking for!\n")
+            print("Returning to search menu....")
+
+
 def main():
     """
     Start the program
     """
     books = load_books()
     clear_screen()
+    print("Welcome to Your Leaving Cert Library!\n")
 
     while True:
-        print("Welcome to Your Leaving Cert Library!\n")
         print("To find and check out a book, please select an option below:\n")
         print(colored(("(1) Search by Subject"), "green"))
         print(colored(("(2) Search by Publisher"), "green"))
@@ -110,27 +132,15 @@ def main():
             print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
             continue
 
-        if not matching_books:
-            print(f'Uh oh! No matching books found for "{search_term}".')
-
         for title in matching_books:
             print(f'Title: {title}')
-            
             print(f'Publisher: {matching_books[title]["publisher"]}')
             print(f'Subject: {matching_books[title]["subject"]}\n')
 
-        checkout_book = input("Enter book title to checkout or 'q' to quit:\n")
-
-        if checkout_book.strip().lower() == 'q':
-            main()
-
-        if checkout_book.strip() in matching_books:
-            # clear_screen()
-            checkout_message(checkout_book)
+        if not matching_books:
+            print(f'Uh oh! No matching books found for "{search_term}".')
         else:
-            print("Looks like our library does not have that book.\n")
-            print("Let's see if we can help find what you're looking for!\n")
-            print("Returning to search menu....")
+            checkout_book(books, matching_books)
 
 
 def clear_screen():
