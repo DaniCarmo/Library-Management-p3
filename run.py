@@ -46,7 +46,8 @@ def load_books():
     book_info = {}
     for row in all_data:
         title, publisher, subject = row
-        book_info[title] = {'title': title, 'publisher': publisher, 'subject': subject}
+        book_info[title] = {'title': title, 'publisher': publisher, \
+            'subject': subject}
 
     return book_info
 
@@ -67,28 +68,29 @@ def checkout_message(book_title):
     """
     Message to appear to user upon checking out
     """
-    # clear_screen
+    clear_screen()
     print(f"Great! You have successfully checked out '{book_title}'\n")
-    print("Please collect it from the library reception by 3pm today.\n")
+    print("Please collect from the library reception by 3pm today.\n")
     print("Enjoy your reading!\n")
 
 
 def checkout_book(books, matching_books):
     while True:
-        checkout_choice = input("Enter book title to checkout or 'q' to quit:\n")
+        checkout_choice = input("Enter book title to checkout or 'q' to quit:")
 
         if checkout_choice.strip().lower() == 'q':
             return  # Return to the main menu
 
         if checkout_choice.strip() in matching_books:
             book_title = checkout_choice.strip()
-            print(f'You selected: {book_title}')
+            print(f'You selected: {book_title}\n')
             confirm = input("Confirm checkout (y/n): ").strip().lower()
             if confirm == 'y':
                 checkout_message(book_title)
                 break
             else:
-                print("Checkout canceled. Let's see if we can help you find another book!\n")
+                print("Ok let's try that again! Please enter book title to \
+                    check out:\n")
         else:
             print("Looks like our library does not have that book.\n")
             print("Let's see if we can help find what you're looking for!\n")
@@ -110,8 +112,6 @@ def handle_user_choice():
         matching_books = search_by_field(books, 'title', search_term)
     else:
         print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
-        
-        continue
 
     for title in matching_books:
         print(f'Title: {title}')
@@ -175,6 +175,7 @@ def main():
         else:
             checkout_book(books, matching_books)
 """
+
 
 def clear_screen():
     """
