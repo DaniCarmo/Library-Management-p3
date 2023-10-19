@@ -51,7 +51,7 @@ def load_books():
             'subject': subject
             }
 
-    print("Done loading books.\n")
+    print("Ok let's go!.\n")
     return book_info
 
 
