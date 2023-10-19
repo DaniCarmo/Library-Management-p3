@@ -87,7 +87,7 @@ def checkout_book(books, matching_books):
 
         if checkout_choice.strip() in matching_books:
             book_title = checkout_choice.strip()
-            print(f'You selected: {book_title}\n')
+            print(colored((f"You selected: '{book_title}'\n"), "green"))
             confirm = input("Confirm checkout (y/n): ").strip().lower()
             if confirm == 'y':
                 clear_screen()
