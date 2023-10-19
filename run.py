@@ -128,6 +128,7 @@ def main():
     """
     Display the main menu and get user choice
     """
+    global books
     books = load_books()
     clear_screen()
     print("Welcome to Your Leaving Cert Library!\n")
@@ -138,6 +139,7 @@ def main():
         print(colored(("(2) Search by Publisher"), "green"))
         print(colored(("(3) Search by Title"), "green"))
 
+        global user_choice
         user_choice = input("Enter your choice (1/2/3): ")
 
         if not user_choice:
