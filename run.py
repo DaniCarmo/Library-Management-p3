@@ -95,9 +95,38 @@ def checkout_book(books, matching_books):
             print("Returning to search menu....")
 
 
+def handle_user_choice():
+    if user_choice == "1":
+        search_term = input("Please enter the subject: ")
+        clear_screen()
+        matching_books = search_by_field(books, 'subject', search_term)
+    elif user_choice == "2":
+        search_term = input("Please enter the publisher: ")
+        clear_screen()
+        matching_books = search_by_field(books, 'publisher', search_term)
+    elif user_choice == "3":
+        search_term = input("Please enter the title: ")
+        clear_screen()
+        matching_books = search_by_field(books, 'title', search_term)
+    else:
+        print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
+        
+        continue
+
+    for title in matching_books:
+        print(f'Title: {title}')
+        print(f'Publisher: {matching_books[title]["publisher"]}')
+        print(f'Subject: {matching_books[title]["subject"]}\n')
+
+    if not matching_books:
+        print(f'Uh oh! No matching books found for "{search_term}".')
+    else:
+        checkout_book(books, matching_books)
+
+
 def main():
     """
-    Start the program
+    Display the main menu and get user choice
     """
     books = load_books()
     clear_screen()
@@ -115,7 +144,9 @@ def main():
             print(colored(("Please enter an option above to continue"), "red"))
 
             continue
-        
+        handle_user_choice()
+
+    """
         if user_choice == "1":
             search_term = input("Please enter the subject: ")
             clear_screen()
@@ -141,7 +172,7 @@ def main():
             print(f'Uh oh! No matching books found for "{search_term}".')
         else:
             checkout_book(books, matching_books)
-
+"""
 
 def clear_screen():
     """
