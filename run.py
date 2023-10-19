@@ -159,13 +159,7 @@ def main():
 
 
 def clear_screen():
-    """
-    Clear the terminal screen.
-    """
-    if os.name == 'posix':
-        os.system('clear')
-    elif os.name == 'nt':
-        os.system('cls')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 if __name__ == "__main__":
