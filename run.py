@@ -67,15 +67,16 @@ def checkout_message(book_title):
     """
     Message to appear to user upon checking out
     """
-    clear_screen()
     print(f"Great! You have successfully checked out '{book_title}'\n")
     print("Please collect from the library reception by 3pm today.\n")
     print("Enjoy your reading!\n")
+    print("Back to main menu:")
 
 
 def checkout_book(books, matching_books):
     while True:
-        checkout_choice = input("Enter book title to checkout or 'q' to quit:")
+        checkout_choice = input("Enter book title to checkout or 'q' to quit\
+            and return to main search menu:")
 
         if checkout_choice.strip().lower() == 'q':
             return  # Return to the main menu
@@ -85,11 +86,11 @@ def checkout_book(books, matching_books):
             print(f'You selected: {book_title}\n')
             confirm = input("Confirm checkout (y/n): ").strip().lower()
             if confirm == 'y':
+                clear_screen()
                 checkout_message(book_title)
                 break
             else:
-                print("Ok let's try that again! Please enter book title to \
-                    check out:\n")
+                print("Ok let's try that again!\n")
         else:
             print("Looks like our library does not have that book.\n")
             print("Let's see if we can help find what you're looking for!\n")
@@ -97,6 +98,7 @@ def checkout_book(books, matching_books):
 
 
 def handle_user_choice():
+    clear_screen()
     if user_choice == "1":
         search_term = input("Please enter the subject: ")
         clear_screen()
