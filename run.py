@@ -51,7 +51,7 @@ def load_books():
             'subject': subject
             }
 
-    print("Ok let's go!.\n")
+    print("Ok let's go!\n")
     return book_info
 
 
@@ -147,12 +147,7 @@ def main():
     books = load_books()
 
     while True:
-        print("To find and check out a book, please select an option below:\n")
-        print(colored(("(1) Search by Subject"), "green"))
-        print(colored(("(2) Search by Publisher"), "green"))
-        print(colored(("(3) Search by Title"), "green"))
-        print(colored("(4) Quit", "red"))
-
+        print_menu()
         global user_choice
         user_choice = input("Enter your choice (1/2/3/4): \n")
 
@@ -163,6 +158,17 @@ def main():
             break
         else:
             handle_user_choice()
+
+
+def print_menu():
+    """
+    Menu search options
+    """
+    print("To find and check out a book, please select an option below:\n")
+    print(colored(("(1) Search by Subject"), "green"))
+    print(colored(("(2) Search by Publisher"), "green"))
+    print(colored(("(3) Search by Title"), "green"))
+    print(colored("(4) Quit", "red"))
 
 
 def clear_screen():
