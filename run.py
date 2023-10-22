@@ -108,7 +108,8 @@ def checkout_book(books, matching_books):
         else:
             print(colored(("Looks like our library does not "
                            "have that book.\n"), "red"))
-            print("Let's see if we can help find what you're looking for!\n")
+            print(colored(("Let's see if we can help find what you're "
+                           "looking for!\n"), "green"))
 
 
 def handle_user_choice():
