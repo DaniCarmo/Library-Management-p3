@@ -78,6 +78,9 @@ def checkout_message(book_title):
 
 
 def checkout_book(books, matching_books):
+    """
+    User confirmation to checkout or quit when/if book found
+    """
     while True:
         checkout_choice = input("Enter book title to checkout or "
                                 "'m' for main menu:\n")
@@ -102,6 +105,9 @@ def checkout_book(books, matching_books):
 
 
 def handle_user_choice():
+    """
+    Enter search term and bring user to checkout once confirmed
+    """
     clear_screen()
     if user_choice == "1":
         search_term = input("Please enter the subject: \n")
@@ -160,6 +166,9 @@ def main():
 
 
 def clear_screen():
+    """
+    Clear screen for better UX design
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
