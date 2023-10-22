@@ -88,7 +88,7 @@ def checkout_book(books, matching_books):
         if checkout_choice.strip() in matching_books:
             book_title = checkout_choice.strip()
             print(colored((f"You selected: '{book_title}'\n"), "green"))
-            confirm = input("Confirm checkout (y/n): ").strip().lower()
+            confirm = input("Confirm checkout (y/n): \n").strip().lower()
             if confirm == 'y':
                 clear_screen()
                 checkout_message(book_title)
@@ -104,15 +104,15 @@ def checkout_book(books, matching_books):
 def handle_user_choice():
     clear_screen()
     if user_choice == "1":
-        search_term = input("Please enter the subject: ")
+        search_term = input("Please enter the subject: \n")
         clear_screen()
         matching_books = search_by_field(books, 'subject', search_term)
     elif user_choice == "2":
-        search_term = input("Please enter the publisher: ")
+        search_term = input("Please enter the publisher: \n")
         clear_screen()
         matching_books = search_by_field(books, 'publisher', search_term)
     elif user_choice == "3":
-        search_term = input("Please enter the title: ")
+        search_term = input("Please enter the title: \n")
         clear_screen()
         matching_books = search_by_field(books, 'title', search_term)
     else:
@@ -148,7 +148,7 @@ def main():
         print(colored("(4) Quit", "red"))
 
         global user_choice
-        user_choice = input("Enter your choice (1/2/3/4): ")
+        user_choice = input("Enter your choice (1/2/3/4): \n")
 
         if not user_choice:
             print(colored("Please enter an option above to continue", "red"))
