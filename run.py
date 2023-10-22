@@ -84,7 +84,7 @@ def checkout_message(book_title):
     # Add horizontal line
     print("-" * 50)
     print("Back to main menu:")
-    
+
 
 def checkout_book(books, matching_books):
     """
