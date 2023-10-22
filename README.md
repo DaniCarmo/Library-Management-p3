@@ -1,14 +1,51 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# School Library App
 
-Welcome,
+This school library app was designed to create a management system by where students can go in and checkout leaving cert books, the site is specifially trageted at leaving cert students with all books taken from the 2023/2024 leaving cert cirriculum.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+View the live site [here]().
 
-## Reminders
+![screenshot of the live site]()
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+
+## Contents
+
+* [Purpose](#purpose)
+* [User Experience](#user-experience)
+   * [Project Goals](#project-goals)
+   * [User Stories](#user-stories)
+   * [Program Flowchart](#program-flowchart)
+* [Data Storage](#data-storage-google-sheets)
+* [Features](#features)
+   * [Existing Features](#existing-features)
+      * [The Main Menu](#the-main-menu)
+      * [The Search Menu](#the-search-menu)
+      * [The Search Results Display](#the-search-results-display)
+      * [The Display For Today's Appointments](#the-display-for-todays-appointments)
+      * [The Date Input Prompt](#the-date-input-prompt)
+      * [The Time Input Prompt](#the-time-input-prompt)
+      * [The Name Input Prompt](#the-name-input-prompt)
+      * [The Booking Confirmation](#the-booking-confirmation)
+      * [The Already Booked Display](#the-already-booked-display)
+      * [The Cancelation Prompt](#the-cancelation-prompt)
+      * [The confirmed Cancelation Display](#the-confirmed-cancelation-display)
+      * [The Application Instructions Display](#the-application-instructions-display)
+      * [The Emergency Exit Option](#the-emergency-exit-option)
+      * [Feedback For Invalid Inputs](#feedback-for-invalid-inputs)
+      * [Background Features](#background-features)
+   * [Future Features](#future-features)
+* [Technologies Used](#technologies-used)
+* [Python Packages Used](#python-packages-used)
+* [Testing](#testing)
+   * [Python PEP8 Validation](#python-pep8-validation)
+   * [Testing User Stories](#testing-user-stories)
+   * [Development Bugs](#development-bugs)
+* [Deployment and Development](#deployment-and-development)
+   * [Deploying the App](#deploying-the-app)
+   * [Forking The Repository](#forking-the-repository)
+   * [Cloning The Repository](#cloning-the-repository)
+   * [APIs](#apis)
+* [Credits](#credits)
+
 
 ## Creating the Heroku app
 
