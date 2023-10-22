@@ -24,6 +24,13 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('book_repository')
 
 
+def clear_screen():
+    """
+    Clear screen for better UX design
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def load_books():
     """
     Load all books in the spreadsheet.
@@ -136,6 +143,17 @@ def handle_user_choice():
         checkout_book(books, matching_books)
 
 
+def print_menu():
+    """
+    Menu search options
+    """
+    print("To find and check out a book, please select an option below:\n")
+    print(colored(("(1) Search by Subject"), "green"))
+    print(colored(("(2) Search by Publisher"), "green"))
+    print(colored(("(3) Search by Title"), "green"))
+    print(colored("(4) Quit", "red"))
+
+
 def main():
     """
     Display the main menu and get user choice
@@ -158,24 +176,6 @@ def main():
             break
         else:
             handle_user_choice()
-
-
-def print_menu():
-    """
-    Menu search options
-    """
-    print("To find and check out a book, please select an option below:\n")
-    print(colored(("(1) Search by Subject"), "green"))
-    print(colored(("(2) Search by Publisher"), "green"))
-    print(colored(("(3) Search by Title"), "green"))
-    print(colored("(4) Quit", "red"))
-
-
-def clear_screen():
-    """
-    Clear screen for better UX design
-    """
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 if __name__ == "__main__":
