@@ -81,8 +81,10 @@ def checkout_message(book_title):
     print(f"Great! You have successfully checked out '{book_title}'\n")
     print("Please collect from the library reception by 3pm today.\n")
     print("Enjoy your reading!\n")
+    # Add horizontal line
+    print("-" * 50)
     print("Back to main menu:")
-
+    
 
 def checkout_book(books, matching_books):
     """
