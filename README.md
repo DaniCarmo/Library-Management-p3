@@ -4,7 +4,7 @@ This school library app was designed to create a management system by where stud
 
 View the live site [here](https://library-management-p3-928b1bbc3b7c.herokuapp.com/).
 
-![screenshot of the live site]()
+![screenshot of the live site](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/deployed-screenshot.png?raw=true)
 
 
 ## Contents
@@ -82,40 +82,40 @@ The data for the application is stored in a google sheet [here](https://docs.goo
    * When the page is first loaded, the user is presented with a welcome message and a note confirming that book have been loaded and user can begin search.
    * The user has a search menu with three options to search by as well as a fourth option to Quit the programme.
    
-   ![screenshot of the main menu]()
+   ![screenshot of the main menu](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/main-menu.png?raw=true)
 
    * Following on from the initial search choice of 1-4, the user is then asked to specify their choice.
 
-   ![screenshot of second page of search]()
+   ![screenshot of second page of search](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/second-menu.png?raw=true)
 
 #### The Search Results Display
 
-   * Once the user has input a subject, title or publisher for searching, all matching books are displayed and easily read by the user.
+   * Once the user has input a subject, title or publisher for searching, all matching books are displayed and easily read by the user. Below are screenshots of searchong by the subject "Maths" ad publisher "Folens".
 
-   ![screenshot of search results by subject]()
-   ![screenshot of search results by publisher]()
+   ![screenshot of search results by subject](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/subject-search.png?raw=true)
+   ![screenshot of search results by publisher](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/publisher-search.png?raw=true)
 
    * If no books are found the user is informed and brought back to the main menu where they can try again or quit.
 
-   ![screenshot when no books found]()
+   ![screenshot when no books found](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/none-found.png?raw=true)
 
 #### Checkout
 
    * After the user has been presented with a list of relevant books matching their seatch, they are then asked to enter the title of the book they would like to check out or else go back to the main menu.
    * The user will also be presented with a message to confirm the book title that they wish to checkout and they must enter yes or no to confirm, this is an added feature so the user has one more check to confirm and avoid errors before they commit to checking out.
 
-   ![screenshot of checkout option]()
+   ![screenshot of checkout option](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/checkout.png?raw=true)
 
    * If user enters tnhe title incorrectly an error message will show asking the user to try again:
 
-   ![screenshot of checkout error]()
+   ![screenshot of checkout error](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/checkout-error.png?raw=true)
 
 #### Checkout Confirmation
 
    * Once user has chosen the option to check out their book, a confirmation message will appear to advise that the book has been successfully checked out of the library and can be collected from the library reception by 3pm that day.
    * User is also presented with the main search menu again where they can search and checkout another book or quit the programme.
 
-   ![screenshot of checkout confirmation]()
+   ![screenshot of checkout confirmation](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/checkout-confirmation.png?raw=true)
 
 #### Feedback For Invalid Inputs
 
@@ -123,11 +123,11 @@ The data for the application is stored in a google sheet [here](https://docs.goo
 
    * The main menu has options 1-4, if the user enters any other number they will be presented with an error message.
 
-    ![screenshot of menu options error]()
+    ![screenshot of menu options error](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/menu-error.png?raw=true)
 
    * If the user enters a subject, publisher or book title that does not exist in the library they will be presented with an error message.
 
-    ![screenshot of choice input error]()
+    ![screenshot of choice input error](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/none-found.png?raw=true)
 
 ### Future Features
 
