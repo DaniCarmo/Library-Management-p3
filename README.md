@@ -27,8 +27,8 @@ View the live site [here](https://library-management-p3-928b1bbc3b7c.herokuapp.c
 * [Python Packages Used](#python-packages-used)
 * [Testing](#testing)
    * [Python PEP8 Validation](#python-pep8-validation)
-   * [Testing User Stories](#testing-user-stories)
-   * [Development Bugs](#development-bugs)
+   * [Manual Testing](#manual-testing)
+   * [Unfixed Bugs](#unfixed-bugs)
 * [Deployment and Development](#deployment-and-development)
    * [Deploying the App](#deploying-the-app)
    * [Forking The Repository](#forking-the-repository)
@@ -166,4 +166,63 @@ Features to be implemented may include:
 * [Color](https://pypi.org/project/colour/)
    * Used to add color to certain text.
 
+## Testing
 
+Various tests were carried out for this project.
+
+NB - HTML, CSS, and JavaScript were provided in the [code institute template](https://github.com/Code-Institute-Org/python-essentials-template) and are not in scope for this project as well as the aspect of responsive design, therefore they were not taken into consideration.
+
+### Python PEP8 Validation
+
+The code has been tested by using [Code Institute CI Python Linter (Pep8)](https://pep8ci.herokuapp.com/)
+
+![screenshot of test]()
+
+The code was also checked throughout the project where errors showed up on CodeAnywhere regarding lines too long and white space trailing, and these were fixed as they arose.
+
+### Manual Testing
+
+Run each test mentioned in the table below multiple times.
+(table)
+
+### Unfixed Bugs
+
+....
+
+## Deployment and Development
+
+* The project was developed using Codeanywhere to create the code and files required.
+* The project files, code, and information are hosted by [Github](https://github.com/).
+
+### Deploying the App
+
+The deployment of the project was done using [Heroku](https://www.heroku.com/) through the following steps.
+
+1. Log in to Heroku or create an account if necessary.
+2. Click on the button labeled "New" from the dashboard in the top right corner and select the "Create new app" option in the drop-down menu.
+3. Enter a unique name for the application and select the region you are in.
+   * For this project, the unique name is "doctor-diary" and the region selected is Europe.
+4. Click on "create app".
+5. Navigate to the settings tab and locate the "Config Vars" section and click "Reveal config vars".
+6. Add a config var (if the project uses creds.json file.)
+   * In the "KEY" field:
+      * enter "CREDS" in capital letters.
+   * In the "VALUE" field:
+      * copy and paste the contents of your creds.json file and click "Add".
+7. Add another config var.
+   * In the "KEY" field:
+      * enter PORT in all capital letters.
+   * In the "VALUE" field:
+      * enter 8000 and click "Add".
+8. Scroll to the "Buildpacks" section and click "Add buildpack".
+9. Select Python and save changes.
+10. Add another buildpack and select Nodejs then save changes again.
+11. Ensure that the python buildpack is above the Nodejs buildpack.
+12. Navigate to the "Deploy" section by clicking the "Deploy" tab in the top navbar.
+13. Select "GitHub" as the deployment method and click "Connect to GitHub".
+14. Search for the GitHub repository name in the search bar.
+15. Click on "connect" to link the repository to Heroku.
+16. Scroll down and click on "Deploy Branch".
+17. Once the app is deployed, Heroku will notify you and provide a button to view the app.
+
+NB - If you wish to rebuild the deployed app automatically every time you push to GitHub, you may click on "Enable Automatic Deploys".
