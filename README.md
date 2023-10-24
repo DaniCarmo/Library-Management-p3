@@ -226,3 +226,42 @@ The deployment of the project was done using [Heroku](https://www.heroku.com/) t
 17. Once the app is deployed, Heroku will notify you and provide a button to view the app.
 
 NB - If you wish to rebuild the deployed app automatically every time you push to GitHub, you may click on "Enable Automatic Deploys".
+
+### Forking The Repository
+
+This can be done to create a copy of the repository. The copy can be viewed and edited without affecting the original repository.
+
+To fork the repository through GitHub, take the following steps:
+
+1. In the "Project-3-The-Children-s-Book-Picker" repository, click on the "fork" tab in the top right corner.
+2. Click on "create fork" to fork the repository.
+
+### Cloning The Repository
+
+To clone the repository through GitHub:
+
+1. In the repository, select the "code" tab located just above the list of files and next to the GitHub button.
+2. Ensure HTTPS is selected in the dropdown menu.
+3. Copy the URL under HTTPS.
+4. Open Git Bash in your IDE of choice.
+5. Change the current working directory to the location where you want the cloned directory to be created.
+6. Type "git clone" and paste the URL that was copied from the repository.
+7. Press the "enter" key to create the clone.
+
+### APIs 
+In order for the app to function properly, APIs need to be set up and connected. In particular, the following APIs were used for this project:
+
+* Google Drive API.
+   * This helps with getting credentials to access the files within google drive.
+* Google Sheets API.
+   * This is the API for the google sheets where the data is stored for the program.
+
+I followed the steps in a video from the [Code Institute](https://codeinstitute.net/global/) Love Sandwiches project on how to set up and connect APIs. The link to this video is [here](https://www.youtube.com/watch?v=WTll5p4N7hE).
+   
+## Credits
+
+* I used [this video](https://www.youtube.com/watch?v=WTll5p4N7hE) from [Code Institute](https://codeinstitute.net/global/) to learn how to create and link APIs.
+* Followed tips and troubleshooting throughout the project on Stackoverflow [stackoverflow](https://stackoverflow.blog/) and Python.org [python-org](https://www.python.org/).
+* Got the concept for a library system from another code institute alumni with username "Blignaut24" [user-github](https://github.com/Blignaut24/Project-3-The-Children-s-Book-Picker)
+* I used ChatGBT [chat-gbt](https://chat.openai.com/) to assist with verifying the main function and helping to split out functions form the main function so there was not too much in one function.
+* I got advice from my mentor Ronan McClelland on splitting out functions as well as the clear terminal function.
