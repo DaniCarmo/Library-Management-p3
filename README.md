@@ -2,7 +2,7 @@
 
 This school library app was designed to create a management system by where students can go in and checkout leaving cert books, the site is specifially trageted at leaving cert students with books taken from the 2023/2024 leaving cert cirriculum.
 
-View the live site [here]().
+View the live site [here](https://library-management-p3-928b1bbc3b7c.herokuapp.com/).
 
 ![screenshot of the live site]()
 
@@ -102,16 +102,13 @@ The data for the application is stored in a google sheet [here](https://docs.goo
 #### Checkout
 
    * After the user has been presented with a list of relevant books matching their seatch, they are then asked to enter the title of the book they would like to check out or else go back to the main menu.
+   * The user will also be presented with a message to confirm the book title that they wish to checkout and they must enter yes or no to confirm, this is an added feature so the user has one more check to confirm and avoid errors before they commit to checking out.
 
    ![screenshot of checkout option]()
 
    * If user enters tnhe title incorrectly an error message will show asking the user to try again:
 
    ![screenshot of checkout error]()
-
-   * The user will also be presented with a message to confirm the book title that they wish to checkout and they must enter yes or no to confirm, this is an added feature so the user has one more check to confirm and avoid errors before they commit to checking out.
-   
-   ![screenshot of checkout message yes/no]()
 
 #### Checkout Confirmation
 
@@ -170,23 +167,3 @@ Features to be implemented may include:
    * Used to add color to certain text.
 
 
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
