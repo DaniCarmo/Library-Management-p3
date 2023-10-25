@@ -119,6 +119,8 @@ def handle_user_choice():
     Enter search term and bring user to checkout once confirmed
     """
     clear_screen()
+    search_term = ""
+    matching_books = {}
     if user_choice == "1":
         search_term = input("Please enter the subject: \n")
         clear_screen()
@@ -133,6 +135,7 @@ def handle_user_choice():
         matching_books = search_by_field(books, 'title', search_term)
     else:
         print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
+        print_menu()
 
     for title in matching_books:
         print(f'Title: {title}')
