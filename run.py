@@ -134,8 +134,9 @@ def handle_user_choice():
         clear_screen()
         matching_books = search_by_field(books, 'title', search_term)
     else:
-        print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
         print_menu()
+        print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))2
+        return
 
     for title in matching_books:
         print(f'Title: {title}')
