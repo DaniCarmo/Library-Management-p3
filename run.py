@@ -147,8 +147,8 @@ def handle_user_choice():
         print_menu()
         print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
         return
-    clear_screen()
-    print(colored(("printing new search results"), "red"))
+
+    print(colored(("Loading new search results...."), "green"))
     for title in current_results:
         print(f'Title: {title}')
         print(f'Publisher: {current_results[title]["publisher"]}')
