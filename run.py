@@ -96,7 +96,8 @@ def checkout_book(books, matching_books):
                                 "'m' for main menu:\n")
 
         if checkout_choice.strip().lower() == 'm':
-            matching_books.clear() 
+            matching_books.clear()
+            current_results.clear()
             return  # Return to the main menu
 
         matching_title = None
@@ -125,36 +126,39 @@ def handle_user_choice():
     """
     Enter search term and bring user to checkout once confirmed
     """
+    global current_results
+
     clear_screen()
     search_term = ""
-    matching_books = {}
+    current_results = {}
     if user_choice == "1":
         search_term = input("Please enter the subject: \n")
         clear_screen()
-        matching_books = search_by_field(books, 'subject', search_term)
+        current_results = search_by_field(books, 'subject', search_term)
     elif user_choice == "2":
         search_term = input("Please enter the publisher: \n")
         clear_screen()
-        matching_books = search_by_field(books, 'publisher', search_term)
+        current_results = search_by_field(books, 'publisher', search_term)
     elif user_choice == "3":
         search_term = input("Please enter the title: \n")
         clear_screen()
-        matching_books = search_by_field(books, 'title', search_term)
+        current_results = search_by_field(books, 'title', search_term)
     else:
         print_menu()
         print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
         return
-
-    for title in matching_books:
+    clear_screen()
+    print(colored(("printing new search results"), "red"))
+    for title in current_results:
         print(f'Title: {title}')
-        print(f'Publisher: {matching_books[title]["publisher"]}')
-        print(f'Subject: {matching_books[title]["subject"]}\n')
+        print(f'Publisher: {current_results[title]["publisher"]}')
+        print(f'Subject: {current_results[title]["subject"]}\n')
 
-    if not matching_books:
+    if not current_results:
         print(f'Uh oh! No matching books found for "{search_term}".\n')
         print("Let's give it another shot.")
     else:
-        checkout_book(books, matching_books)
+        checkout_book(books, current_results)
 
 
 def print_menu():
