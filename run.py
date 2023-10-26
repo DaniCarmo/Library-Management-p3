@@ -67,8 +67,9 @@ def search_by_field(books, search_field, search_term):
     Search for books by specific field (title, publisher, subject).
     """
     matching_books = {}
+    lower_search_term = search_term.lower()
     for title, info in books.items():
-        if search_term.lower() in info[search_field].lower():
+        if lower_search_term in info[search_field].lower():
             matching_books[title] = info
 
     return matching_books
@@ -97,13 +98,18 @@ def checkout_book(books, matching_books):
         if checkout_choice.strip().lower() == 'm':
             return  # Return to the main menu
 
-        if checkout_choice.strip() in matching_books:
-            book_title = checkout_choice.strip()
-            print(colored((f"You selected: '{book_title}'\n"), "green"))
+        matching_title = None
+        for title in matching_books:
+            if title.lower() == checkout_choice:
+                matching_title = title
+                break
+
+        if matching_title:
+            print(colored((f"You selected: '{matching_title}'\n"), "green"))
             confirm = input("Confirm checkout (y/n): \n").strip().lower()
             if confirm == 'y':
                 clear_screen()
-                checkout_message(book_title)
+                checkout_message(matching_title)
                 break
             else:
                 print("Ok let's try that again!\n")
