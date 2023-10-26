@@ -175,9 +175,7 @@ NB - HTML, CSS, and JavaScript were provided in the [code institute template](ht
 
 ### Python PEP8 Validation
 
-The code has been tested by using [Code Institute CI Python Linter (Pep8)](https://pep8ci.herokuapp.com/)
-
-![screenshot of test]()
+The code has been tested using [Code Institute CI Python Linter (Pep8)](https://pep8ci.herokuapp.com/) and no errors found.
 
 The code was also checked throughout the project where errors showed up on CodeAnywhere regarding lines too long and white space trailing, and these were fixed as they arose.
 
