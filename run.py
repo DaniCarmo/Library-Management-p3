@@ -92,7 +92,7 @@ def checkout_book(books, matching_books):
     User confirmation to checkout or quit when/if book found
     """
     while True:
-        checkout_choice = input("Enter book title to checkout or "
+        checkout_choice = input("Enter exact book title to checkout or "
                                 "'m' for main menu:\n")
 
         if checkout_choice.strip().lower() == 'm':
