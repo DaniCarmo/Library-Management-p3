@@ -96,6 +96,7 @@ def checkout_book(books, matching_books):
                                 "'m' for main menu:\n")
 
         if checkout_choice.strip().lower() == 'm':
+            matching_books.clear() 
             return  # Return to the main menu
 
         matching_title = None
