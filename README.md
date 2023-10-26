@@ -181,12 +181,12 @@ The code was also checked throughout the project where errors showed up on CodeA
 
 ### Manual Testing
 
-Run each test mentioned in the table below multiple times.
+Ran each test mentioned in the table below multiple times and each action executes as intended, providing confirmation of successful user story requirements and actions.
 (table)
 
 ### Unfixed Bugs
 
-....
+There are no unfixed bugs recorded.
 
 ## Deployment and Development
 
@@ -262,5 +262,5 @@ I followed the steps in a video from the [Code Institute](https://codeinstitute.
 * I used [this video](https://www.youtube.com/watch?v=WTll5p4N7hE) from [Code Institute](https://codeinstitute.net/global/) to learn how to create and link APIs.
 * Followed tips and troubleshooting throughout the project on Stackoverflow [stackoverflow](https://stackoverflow.blog/) and Python.org [python-org](https://www.python.org/).
 * Got the concept for a library system from another code institute alumni with username "Blignaut24" [user-github](https://github.com/Blignaut24/Project-3-The-Children-s-Book-Picker)
-* I used ChatGBT [chat-gbt](https://chat.openai.com/) to assist with verifying the main function and helping to split out functions form the main function so there was not too much in one function.
+* I used ChatGBT [chat-gbt](https://chat.openai.com/) to assist with verifying the main function and helping to split out functions form the main function so there was not too much in one function, as well as assisting in the best way to make user input choices case insensitive to avoid errors when checking out book titles in all lower case.
 * I got advice from my mentor Ronan McClelland on splitting out functions as well as the clear terminal function.
