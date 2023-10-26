@@ -96,8 +96,6 @@ def checkout_book(books, matching_books):
                                 "'m' for main menu:\n")
 
         if checkout_choice.strip().lower() == 'm':
-            matching_books.clear()
-            current_results.clear()
             clear_screen()
             return  # Return to the main menu
 
@@ -127,38 +125,36 @@ def handle_user_choice():
     """
     Enter search term and bring user to checkout once confirmed
     """
-    global current_results
-
     clear_screen()
     search_term = ""
-    current_results = {}
+    matching_books = {}
     if user_choice == "1":
         search_term = input("Please enter the subject: \n")
         clear_screen()
-        current_results = search_by_field(books, 'subject', search_term)
+        matching_books = search_by_field(books, 'subject', search_term)
     elif user_choice == "2":
         search_term = input("Please enter the publisher: \n")
         clear_screen()
-        current_results = search_by_field(books, 'publisher', search_term)
+        matching_books = search_by_field(books, 'publisher', search_term)
     elif user_choice == "3":
         search_term = input("Please enter the title: \n")
         clear_screen()
-        current_results = search_by_field(books, 'title', search_term)
+        matching_books = search_by_field(books, 'title', search_term)
     else:
         print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
         return
 
     print(colored(("Loading new search results...."), "green"))
-    for title in current_results:
+    for title in matching_books:
         print(f'Title: {title}')
-        print(f'Publisher: {current_results[title]["publisher"]}')
-        print(f'Subject: {current_results[title]["subject"]}\n')
+        print(f'Publisher: {matching_books[title]["publisher"]}')
+        print(f'Subject: {matching_books[title]["subject"]}\n')
 
-    if not current_results:
+    if not matching_books:
         print(f'Uh oh! No matching books found for "{search_term}".\n')
         print("Let's give it another shot.")
     else:
-        checkout_book(books, current_results)
+        checkout_book(books, matching_books)
 
 
 def print_menu():
@@ -191,7 +187,7 @@ def main():
             print(colored("Please enter an option above to continue", "red"))
         elif user_choice == "4":
             print("Goodbye! Thanks for using the library system.")
-            break
+            sys.exit()
         else:
             handle_user_choice()
 
