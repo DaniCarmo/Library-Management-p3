@@ -98,6 +98,7 @@ def checkout_book(books, matching_books):
         if checkout_choice.strip().lower() == 'm':
             matching_books.clear()
             current_results.clear()
+            clear_screen()
             return  # Return to the main menu
 
         matching_title = None
@@ -144,7 +145,6 @@ def handle_user_choice():
         clear_screen()
         current_results = search_by_field(books, 'title', search_term)
     else:
-        print_menu()
         print(colored(("Oops! Please choose option 1, 2, or 3."), "red"))
         return
 
