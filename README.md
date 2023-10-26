@@ -67,7 +67,8 @@ As a user, I want to be able to:
 During the planning stages, I created a basic flowchart of how I wanted the program to work and interact.
 The flowchart was created using [Lucidchart](https://www.lucidchart.com/pages/).
 
-![flowchart-screenshot]()
+![flowchart-screenshot1](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/chart1.png?raw=true)
+![flowchart-screenshot1](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/chart2.png?raw=true)
 
 ## Data Storage (Google Sheets)
 
