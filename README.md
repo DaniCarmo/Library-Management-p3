@@ -124,11 +124,16 @@ The data for the application is stored in a google sheet [here](https://docs.goo
 
    * The main menu has options 1-4, if the user enters any other number they will be presented with an error message.
 
-    ![screenshot of menu options error](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/menu-error.png?raw=true)
+    ![screenshot of menu options error](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/main-menu-error.png?raw=true)
+
+   * If user hits enter without making a choice, they will be presented with an error message.
+
+    ![screenshot of menu options none chosen](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/main-menu-none.png?raw=true)
+
 
    * If the user enters a subject, publisher or book title that does not exist in the library they will be presented with an error message.
 
-    ![screenshot of choice input error](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/none-found.png?raw=true)
+    ![screenshot of choice input error](https://github.com/DaniCarmo/library-management/blob/main/Screenshots/no-book-found.png?raw=true)
 
 ### Future Features
 
