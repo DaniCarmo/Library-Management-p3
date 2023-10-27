@@ -184,6 +184,7 @@ def main():
         user_choice = input("Enter your choice (1/2/3/4): \n")
 
         if not user_choice:
+            clear_screen()
             print(colored("Please enter a valid option to continue", "red"))
         elif user_choice == "4":
             print("Goodbye! Thanks for using the library system.")
