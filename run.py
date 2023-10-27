@@ -93,17 +93,14 @@ def checkout_book(books, matching_books):
     """
     while True:
         checkout_choice = input("Please enter full book title to checkout or "
-                                "'m' for main menu:\n")
+                                "'m' for main menu:\n").strip().lower()
 
-        if checkout_choice.strip().lower() == 'm':
+        if checkout_choice == 'm':
             clear_screen()
             return  # Return to the main menu
 
-        matching_title = None
-        for title in matching_books:
-            if title.lower() == checkout_choice:
-                matching_title = title
-                break
+        matching_title = next((title for title in matching_books if
+                               title.lower() == checkout_choice), None)
 
         if matching_title:
             print(colored((f"You selected: '{matching_title}'\n"), "green"))
